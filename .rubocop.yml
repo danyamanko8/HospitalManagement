@@ -1,0 +1,72 @@
+# Common configuration.
+AllCops:
+  # Include common Ruby source files.
+  Exclude:
+    - Capfile
+    - 'vendor/**/*'
+    - 'tmp/**/*'
+    - 'db/**/*'
+    - 'log/**/*'
+    - '.bundle/**/*'
+    - 'config/**/*'
+    - 'config/environments/**'
+    - 'config/application.rb'
+    - 'bin/**/*'
+    - 'temp/**/*'
+    - 'db/schema.rb'
+    - 'Gemfile.lock'
+  NewCops: enable
+
+Layout/LineLength:
+  Max: 160
+Style/BarePercentLiterals:
+  Enabled: false
+Style/PercentLiteralDelimiters:
+  Enabled: false
+Style/RedundantPercentQ:
+  Enabled: false
+Style/Lambda:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: true
+  Max: 35
+
+#Metrics/CyclomaticComplexity:
+#  Enabled: false
+#Metrics/PerceivedComplexity:
+#  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+#Metrics/BlockLength:
+#  Enabled: false
+#Metrics/ParameterLists:
+#  Enabled: false
+Style/AsciiComments:
+  Enabled: false
+
+Metrics/ClassLength:
+  Max: 150
+
+Metrics/ModuleLength:
+  Enabled: false
+Lint/SafeNavigationConsistency:
+  Enabled: false
+Style/RedundantBegin:
+  Enabled: false
+Naming/MemoizedInstanceVariableName:
+  Enabled: false
+Lint/MissingSuper:
+  Enabled: false
+
+Style/HashSyntax:
+  Enabled: false
+
+Naming/MethodParameterName:
+  Exclude:
+    - 'lib/**/*'
