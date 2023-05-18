@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   has_many :appointments, dependent: :destroy
   has_many :doctors, through: :appointments
-  validates :phone_number, presence: true, length: { minimum: 10, maximum: 15 }, uniqueness: true
+  validates :phone_number, presence: true, length: { minimum: 10, maximum: 15 }, uniqueness: true, format: { with: /\A[0-9]+\z/, message: "only allows numbers" }
 
   def email_required?
     false

@@ -17,4 +17,12 @@ class Doctor < ApplicationRecord
   def appointments_count
     errors.add(:base, "You can't have more than 10 appointments") if appointments.size > 10
   end
+
+  def email_required?
+    false
+  end
+
+  def email_changed?
+    false
+  end
 end

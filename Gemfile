@@ -59,6 +59,7 @@ end
 
 # for UI purposes
 gem 'bootstrap', '~> 5.3.0.alpha3'
+gem 'jquery-rails'
 gem 'haml-rails', '~> 2.0'
 gem 'html2haml', '~> 2.2', '>= 2.2.1'
 gem 'simple_form'
@@ -82,3 +83,7 @@ gem 'pagy', '~> 6.0', '>= 6.0.3'
 gem 'activeadmin', '~> 2.13'
 
 gem 'bcrypt', '~> 3.1'
+
+gem "cssbundling-rails", "~> 1.1"
+
+gem "jsbundling-rails", "~> 1.1"

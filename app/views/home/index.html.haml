@@ -1,0 +1,8 @@
+.card.text-center.mt-5
+  .card-body.mt-5
+    %h5.card-title.mb-5 Before continuing, please sign in as a patient or a doctor.
+    = link_to 'As Patient', new_user_session_path, class: 'btn btn-outline-primary ml-5'
+    = link_to 'As Doctor', new_doctor_session_path, class: 'btn btn-outline-danger mr-5'
+  .card-footer.text-muted.mt-5.mb-lg-5
+    Welcome to Hospital Management System
+= image_tag 'Hospital-PNG-Picture.png', class: 'img-fluid', style: 'width: 100%; height: 100%;'

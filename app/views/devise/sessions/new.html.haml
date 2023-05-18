@@ -1,9 +1,11 @@
-%h2 Log in
-= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .form-inputs
-    = f.input :phone_number, required: false, autofocus: true, input_html: { autocomplete: "phone_number" }
-    = f.input :password, required: false, input_html: { autocomplete: "current-password" }
-    = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
-  .form-actions
-    = f.button :submit, "Log in"
-= render "devise/shared/links"
+.card.text-center.mt-5.position-absolute.start-50.translate-middle{ style: 'top: 45%; width: 30rem; height: 30rem;' }
+  .card-body.mt-5
+    %h2 Log in
+    = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .form-inputs
+        = f.input :phone_number, required: false, autofocus: true, input_html: { autocomplete: "phone_number" }
+        = f.input :password, required: false, input_html: { autocomplete: "current-password" }
+      .form-actions
+        = f.button :submit, "Log in", class: "btn btn-outline-success mb-lg-5"
+    = render "devise/shared/links"
+

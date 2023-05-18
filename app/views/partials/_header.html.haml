@@ -1,0 +1,10 @@
+.app-header
+  %nav.navbar.fixed-top.navbar-expand-lg.navbar-dark.bg-info
+    .container
+      = link_to "Hospital Management", root_path, class: "navbar-brand"
+      %span.navbar-toggler(aria-controls="navbar-header" aria-expanded="false" aria-label="Toggle navigation" data-bs-target="#navbar-header" data-bs-toggle="collapse" type="button")
+        %span.navbar-toggler-icon
+      #navbar-header.collapse.navbar-collapse
+        %ul.navbar-nav.ms-auto
+          %li.nav-item
+            = link_to "My Profile", root_path, class: "nav-link text-white"

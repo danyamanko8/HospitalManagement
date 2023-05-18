@@ -10,4 +10,5 @@
   %body
     - flash.each do |name, msg|
       = content_tag :div, msg, class: name
+    = render 'partials/header'
     = yield
