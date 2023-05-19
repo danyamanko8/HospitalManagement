@@ -1,0 +1,30 @@
+.card.mt-5.position-absolute.start-50.translate-middle{ style: 'top: 35%; width: 30rem; height: 30rem;' }(style="width: 18rem;")
+  = image_tag @record.avatar.url(:thumb), class: 'card-img-top'
+  .card-body
+    %h5.card-title= "#{[@record.first_name, @record.last_name].join(' ')}"
+    %p.card-text Your details are below
+    %table.table.table-bordered
+      %tbody
+        %tr
+          %td Gender
+          %td= @record.gender
+        %tr
+          %td Date of birth
+          %td= @record.date_of_birth
+        %tr
+          %td Email
+          %td= @record.email
+        %tr
+          %td Phone
+          %td= @record.phone_number
+        %tr
+          %td City
+          %td= @record.city
+        %tr
+          %td Street
+          %td= @record.street
+        %tr
+          %td House
+          %td= @record.house_number
+  .card-body.text-lg-center
+    = link_to 'Edit Personal Details', edit_user_path(@record), class: 'btn btn-primary btn-lg btn-block'

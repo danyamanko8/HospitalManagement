@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   end
 
   authenticated :user do
-    root to: 'appointments#index', as: :authenticated_root
+    root to: 'home#index', as: :authenticated_root
   end
+
+  resources :users, only: [:show, :edit, :update]
 end

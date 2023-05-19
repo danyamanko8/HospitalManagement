@@ -1,9 +1,10 @@
-.card.text-center.mt-5.position-absolute.start-50.translate-middle{ style: 'top: 45%; width: 30rem; height: 35rem;' }
+.card.text-center.mt-5.position-absolute.start-50.translate-middle{ style: 'top: 45%; width: 30rem; height: 40rem;' }
   .card-body.mt-5
     %h2 Sign up
     = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
       .form-inputs
         = f.input :phone_number, required: true, autofocus: true, input_html: { autocomplete: "phone_number" }
+        = f.input :email, required: true, input_html: { autocomplete: "email" }
         = f.input :password, required: true, hint: (@minimum_password_length.present? ? "#{@minimum_password_length} characters minimum" : nil), input_html: { autocomplete: "new-password" }
         = f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password" }
       .form-actions

@@ -6,5 +6,15 @@
         %span.navbar-toggler-icon
       #navbar-header.collapse.navbar-collapse
         %ul.navbar-nav.ms-auto
-          %li.nav-item
-            = link_to "My Profile", root_path, class: "nav-link text-white"
+          %li.nav-item.text-sm-center
+            - if user_signed_in?
+              = link_to "My Profile", user_path(current_user), class: "btn btn-outline-light"
+            - elsif doctor_signed_in?
+              = link_to "My Profile", doctor_path(current_doctor), class: "btn btn-outline-light"
+            - else
+              = link_to "Login", new_user_session_path, class: "btn btn-outline-light"
+          %li.nav-item.text-sm-center{ style: 'margin-left: 10px;' }
+            - if user_signed_in?
+              = link_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger"
+            - elsif doctor_signed_in?
+              = link_to "Logout", destroy_doctor_session_path, method: :delete, class: "btn btn-outline-danger"

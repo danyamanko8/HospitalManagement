@@ -48,6 +48,7 @@ end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem 'byebug'
   gem 'web-console'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
@@ -59,9 +60,9 @@ end
 
 # for UI purposes
 gem 'bootstrap', '~> 5.3.0.alpha3'
-gem 'jquery-rails'
 gem 'haml-rails', '~> 2.0'
 gem 'html2haml', '~> 2.2', '>= 2.2.1'
+gem 'jquery-rails'
 gem 'simple_form'
 gem 'webpacker', '~> 5.0'
 
@@ -80,10 +81,12 @@ gem 'rubocop-rails', require: false
 # for pagination
 gem 'pagy', '~> 6.0', '>= 6.0.3'
 
+# for admin panel
 gem 'activeadmin', '~> 2.13'
 
 gem 'bcrypt', '~> 3.1'
-
 gem "cssbundling-rails", "~> 1.1"
-
 gem "jsbundling-rails", "~> 1.1"
+
+# for authorization
+gem 'cancancan'

@@ -76,8 +76,8 @@ ActiveAdmin.setup do |config|
   # within when looking for a resource's policy.
   # config.pundit_policy_namespace = :admin
 
-  # You can customize your CanCan Ability class name here.
-  # config.cancan_ability_class = "Ability"
+  # You can customize your CanCan UserAbility class name here.
+  # config.cancan_ability_class = "UserAbility"
 
   # You can specify a method to be called on unauthorized access.
   # This is necessary in order to prevent a redirect loop which happens
