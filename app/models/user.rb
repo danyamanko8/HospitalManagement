@@ -17,6 +17,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true, length: { minimum: 2, maximum: 20 }
   validates :last_name, presence: true, length: { minimum: 2, maximum: 20 }
   validates :date_of_birth, presence: true, format: { with: /\d{4}-\d{2}-\d{2}/, message: "only allows format YYYY-MM-DD" }
+  validates_presence_of :street, :house_number, :city, :gender
 
   # def email_required?
   #   false

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class UsersController < ApplicationController
+class UsersController < ResourcesController
+  before_action :authenticate_user!
+
   def current_ability
     @current_ability ||= UserAbility.new(current_user)
   end
@@ -10,16 +12,26 @@ class UsersController < ApplicationController
   def edit; end
 
   def update
-    if @record.update(user_params.merge(registration_finished: true))
-      redirect_to root_path, notice: 'Your account has been updated.'
+    if @record.update(user_params)
+      redirect_back(fallback_location: root_path, notice: 'Your account was successfully updated.')
     else
       render :edit, alert: "There was an error updating your account: #{@record.errors.full_messages.join('; ')}"
     end
   end
 
+  def appointments
+    @appointments = current_user.appointments
+  end
+
+  def doctors
+    @doctors = Doctor.available
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :phone_number)
+    params.require(:user).permit(:first_name, :last_name, :phone_number, :email,
+                                 :password, :city, :house_number, :street,
+                                 :gender, :date_of_birth, :avatar, :gender)
   end
 end

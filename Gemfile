@@ -74,6 +74,7 @@ gem 'letter_opener', group: :development
 
 # for attachments
 gem 'carrierwave', '>= 3.0.0.beta', '< 4.0'
+gem 'fog-aws'
 
 # for code quality and style
 gem 'rubocop-rails', require: false

@@ -6,13 +6,11 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  unauthenticated :user do
-    root to: 'home#index'
-  end
+  root to: 'home#index'
 
-  authenticated :user do
-    root to: 'home#index', as: :authenticated_root
+  resources :users, only: [:show, :edit, :update] do
+    get :appointments, on: :member
   end
-
-  resources :users, only: [:show, :edit, :update]
+  resources :doctors, only: [:show, :edit, :update]
+  resources :appointments, only: [:new, :create, :edit, :update]
 end

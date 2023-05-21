@@ -1,30 +1,38 @@
-.card.mt-5.position-absolute.start-50.translate-middle{ style: 'top: 35%; width: 30rem; height: 30rem;' }(style="width: 18rem;")
-  = image_tag @record.avatar.url(:thumb), class: 'card-img-top'
+.card.mt-5.position-absolute.start-50.translate-middle{ style: 'top: 55%; width: 30rem;' }
+  = image_tag @record.avatar.url(:thumb), class: 'card-img-top mt-3', style: 'width: 10rem; height: 10rem;'
   .card-body
-    %h5.card-title= "#{[@record.first_name, @record.last_name].join(' ')}"
+    %h5.card-title
+      = "#{[@record.first_name, @record.last_name].compact.join(' ')}"
     %p.card-text Your details are below
     %table.table.table-bordered
       %tbody
         %tr
-          %td Gender
-          %td= @record.gender
+          %td.bg-light First name
+          %td.fst-italic
+            = @record.gender
         %tr
-          %td Date of birth
-          %td= @record.date_of_birth
+          %td.bg-light Date of birth
+          %td.fst-italic
+            = @record.date_of_birth
         %tr
-          %td Email
-          %td= @record.email
+          %td.bg-light Email
+          %td.fst-italic
+            = @record.email
         %tr
-          %td Phone
-          %td= @record.phone_number
+          %td.bg-light Phone
+          %td.fst-italic
+            = @record.phone_number
         %tr
-          %td City
-          %td= @record.city
+          %td.bg-light City
+          %td.fst-italic
+            = @record.city
         %tr
-          %td Street
-          %td= @record.street
+          %td.bg-light Street
+          %td.fst-italic
+            = @record.street
         %tr
-          %td House
-          %td= @record.house_number
+          %td.bg-light House
+          %td.fst-italic
+            = @record.house_number
   .card-body.text-lg-center
     = link_to 'Edit Personal Details', edit_user_path(@record), class: 'btn btn-primary btn-lg btn-block'

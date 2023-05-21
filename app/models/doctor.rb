@@ -14,15 +14,25 @@ class Doctor < ApplicationRecord
   validates :phone_number, presence: true, length: { minimum: 10, maximum: 15 }, uniqueness: true
   validate :appointments_count
 
+  scope :available, -> { joins(:appointments).group('doctors.id').having('count(doctors.id) < 10') }
+
   def appointments_count
-    errors.add(:base, "You can't have more than 10 appointments") if appointments.size > 10
+    errors.add(:base, "You can't have more than 10 appointments") if appointments.count > 10
   end
 
-  def email_required?
-    false
+  def appointments_limit_reached?
+    appointments.count >= 10
   end
 
-  def email_changed?
-    false
+  # def email_required?
+  #   false
+  # end
+  #
+  # def email_changed?
+  #   false
+  # end
+
+  def full_name
+    "#{first_name} #{last_name}, #{category&.public_label}"
   end
 end
