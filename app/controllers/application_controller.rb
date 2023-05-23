@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  add_flash_types :alert, :notice, :warning
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   helper_method :error_messages

@@ -9,9 +9,9 @@
     = stylesheet_link_tag "application"
   %body
     - flash.each do |name, msg|
-      = content_tag :div, msg, class: 'alert alert-primary alert-dismissible fade show', style: "top: 50px;"
+      = content_tag :div, msg, class: 'alert alert-primary alert-dismissible text-center fade show', style: "top: 50px;"
     - if error_messages.any?
-      %div.alert.alert-primary.alert-dismissible.fade{ style: "top: 50px;" }
+      %div.alert.alert-primary.text-center.alert-dismissible.fade{ style: "top: 50px;" }
         %h2= "#{pluralize(error_messages.count, "error")} prohibited this action:"
         %ul
           - error_messages.each do |message|

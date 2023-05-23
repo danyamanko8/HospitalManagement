@@ -1,8 +1,6 @@
-.card.mt-5.text-center.position-absolute.start-50.translate-middle{ style: 'top: 35%; width: 70rem;' }
+.card.mt-5.text-center.position-absolute.start-50.translate-middle{ style: 'top: 35%; width: 60rem;' }
   .card-header
     %ul.nav.nav-tabs.card-header-tabs
-      %li.nav-item
-        = link_to 'Doctors', doctors_path, class: 'nav-link'
       %li.nav-item
         %span.nav-link.active My Appointments
     %hr
@@ -10,15 +8,16 @@
       %thead.thead-light
         %tr
           %th(scope="col") #
-          %th(scope="col") Doctor
-          %th(scope="col") Category
+          %th(scope="col") Patient
+          %th(scope="col") Phone Number
           %th(scope="col") Date and Time
           %th(scope="col")
       %tbody
         - @appointments.each do |appointment|
           %tr{ class: "#{'table-danger opacity-50' if appointment.closed?}" }
             %th(scope="row") #{appointment.id}
-            %td= appointment.doctor.full_name
-            %td= appointment.doctor.category&.public_label
+            %td= appointment.user&.full_name
+            %td= appointment.user&.phone_number
             %td= appointment.start_time.strftime('%A, %B %d, %Y at %I:%M %p')
-            %td= link_to 'Check Prescription', appointment_path(appointment), class: 'btn btn-outline-primary' if appointment.recommendation.present?
+            - if appointment.active?
+              %td= link_to 'Add or Update Prescription', add_recommendation_appointment_path(appointment), class: 'btn btn-outline-primary'

@@ -1,0 +1,30 @@
+.card.mt-5.text-center.position-absolute.start-50.translate-middle{ style: 'top: 40%; width: 60rem;' }
+  .card-header
+    %ul.nav.nav-tabs.card-header-tabs
+      %li.nav-item
+        %span.nav-link.active Doctors
+      %li.nav-item
+        = link_to 'My Appointments', appointments_user_path(current_user), class: 'nav-link'
+  .card-body.mt-2
+    = simple_form_for doctors_path, method: :get do |f|
+      .card-body
+        %h5.card-title
+          = f.collection_select :category_id, Category.all, :id, :public_label, { include_blank: 'Tap to select' }, { class: 'form-control', onchange: 'this.form.submit()' }
+          - if params.dig('/doctors', :category_id).present?
+            %span.mt-2
+              = link_to 'Clear', doctors_path, class: 'btn btn-outline-primary mt-2'
+              %hr
+    %table.table
+      %thead.thead-light
+        %tr
+          %th(scope="col") Doctor
+          %th(scope="col") Category
+          %th(scope="col") Bio
+          %th(scope="col")
+      %tbody
+        - @doctors.each do |doctor|
+          %tr{ class: "#{'table-danger opacity-50' if doctor.appointments_limit_reached?}" }
+            %td= doctor.full_name
+            %td= doctor.category&.public_label
+            %td= truncate(doctor.bio, length: 50, omission: '...')
+            %td= link_to 'Add Appointment', new_appointment_path(doctor_id: doctor.id), class: "btn btn-outline-primary #{'disabled' if doctor.appointments_limit_reached?}"

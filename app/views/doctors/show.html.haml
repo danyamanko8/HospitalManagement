@@ -1,0 +1,25 @@
+.card.mt-5.position-absolute.start-50.translate-middle{ style: 'top: 45%; width: 30rem;' }
+  .card-body
+    %h5.card-title
+      = "#{[@record.first_name, @record.last_name].compact.join(' ')}"
+    %p.card-text Your details are below
+    %table.table.table-bordered
+      %tbody
+        %tr
+          %td.bg-light Email
+          %td.fst-italic
+            = @record.email
+        %tr
+          %td.bg-light Phone
+          %td.fst-italic
+            = @record.phone_number
+        %tr
+          %td.bg-light Category
+          %td.fst-italic
+            = @record.category&.public_label
+        %tr
+          %td.bg-light Bio
+          %td.fst-italic
+            = @record.bio
+  .card-body.text-lg-center
+    = link_to 'Edit Personal Details', edit_doctor_path(@record), class: 'btn btn-primary btn-lg btn-block'

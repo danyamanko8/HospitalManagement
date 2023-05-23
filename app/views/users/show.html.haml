@@ -1,4 +1,4 @@
-.card.mt-5.position-absolute.start-50.translate-middle{ style: 'top: 55%; width: 30rem;' }
+.card.mt-5.position-absolute.start-50.translate-middle{ style: 'top: 60%; width: 30rem;' }
   = image_tag @record.avatar.url(:thumb), class: 'card-img-top mt-3', style: 'width: 10rem; height: 10rem;'
   .card-body
     %h5.card-title
@@ -7,7 +7,7 @@
     %table.table.table-bordered
       %tbody
         %tr
-          %td.bg-light First name
+          %td.bg-light Gender
           %td.fst-italic
             = @record.gender
         %tr

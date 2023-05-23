@@ -1,0 +1,14 @@
+.card.text-center.mt-5.position-absolute.start-50.translate-middle{ style: 'top: 45%; width: 40rem;' }
+  .card-body
+    .card-title.text
+      Recommendation of
+      .p-2.fst-italic.fw-bold
+        = @record.doctor&.full_name_with_category
+      .card-title.text
+        about the appointment on
+        .p-2.fst-italic.fw-bold
+          = @record.start_time.strftime('%A, %B %d, %Y at %I:%M %p')
+    .card.text-center.mb-lg-5.fst-italic
+      = @record.recommendation
+    .form-actions
+      = link_to 'Back', appointments_user_path(current_user), class: 'btn btn-outline-primary'

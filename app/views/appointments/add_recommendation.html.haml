@@ -1,0 +1,21 @@
+.card.text-center.mt-5.position-absolute.start-50.translate-middle{ style: 'top: 45%; width: 40rem;' }
+  .card-body
+    = simple_form_for @record, url: attach_recommendation_appointment_path(@record), method: :patch, html: { multipart: true, class: 'form-group' } do |f|
+      .card-title.text
+        Recommendation for
+        .p-2.fst-italic.fw-bold
+          = @record.user&.full_name
+        .card-title.text
+          about the appointment on
+          .p-2.fst-italic.fw-bold
+            = @record.start_time.strftime('%A, %B %d, %Y at %I:%M %p')
+      = f.input :recommendation,
+         class: 'form-control mb-3',
+         hint: 'Please enter your recommendation here',
+         input_html: { rows: 5 },
+         placeholder: 'Please enter your recommendation here',
+         label: false,
+         required: true
+      .form-actions
+        = link_to 'Back', appointments_doctor_path(current_doctor), class: 'btn btn-outline-primary'
+        = f.submit "Save", class: "btn btn-outline-success"

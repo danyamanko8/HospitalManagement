@@ -8,4 +8,5 @@ class Appointment < ApplicationRecord
 
   validates_presence_of :user_id, :doctor_id
   validates :start_time, presence: true, uniqueness: { scope: :doctor_id }, inclusion: { in: (Time.now..Time.now + 1.year) }
+  validates_presence_of :recommendation, on: :update
 end

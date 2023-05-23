@@ -10,11 +10,13 @@ class Doctor < ApplicationRecord
   has_many :appointments, dependent: :destroy
   has_many :users, through: :appointments
 
-  # validates_presence_of :first_name, :last_name, :bio
-  validates :phone_number, presence: true, length: { minimum: 10, maximum: 15 }, uniqueness: true
+  validates :phone_number, presence: true, length: { minimum: 10, maximum: 15 }, uniqueness: true,
+            format: { with: /\A[0-9]+\z/, message: 'only allows numbers' }
+  validates :first_name, presence: true, length: { minimum: 2, maximum: 20 }
+  validates :last_name, presence: true, length: { minimum: 2, maximum: 20 }
   validate :appointments_count
 
-  scope :available, -> { joins(:appointments).group('doctors.id').having('count(doctors.id) < 10') }
+  scope :by_category, ->(category_id) { where(category_id: category_id) }
 
   def appointments_count
     errors.add(:base, "You can't have more than 10 appointments") if appointments.count > 10
@@ -24,15 +26,11 @@ class Doctor < ApplicationRecord
     appointments.count >= 10
   end
 
-  # def email_required?
-  #   false
-  # end
-  #
-  # def email_changed?
-  #   false
-  # end
+  def full_name_with_category
+    "#{full_name} (#{category&.public_label})"
+  end
 
   def full_name
-    "#{first_name} #{last_name}, #{category&.public_label}"
+    "#{first_name&.capitalize} #{last_name&.capitalize}"
   end
 end

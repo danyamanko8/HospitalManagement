@@ -8,7 +8,7 @@
       = f.input :gender,
             required: true,
             collection: User.genders.keys,
-            include_blank: false,
+            include_blank: 'Tap to select',
             input_html: { data: { selected: @record.gender }, onchange: 'this.dataset.selected = this.value' }
       = f.input :date_of_birth, as: :date, start_year: Date.today.year - 100, end_year: Date.today.year - 18, class: 'form-control mb-3', selected: f.object.date_of_birth
       = f.input :phone_number, class: 'form-control mb-3', placeholder: 'Phone number', required: true, hint: 'Enter your phone number'

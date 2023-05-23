@@ -2,6 +2,7 @@
 
 class UsersController < ResourcesController
   before_action :authenticate_user!
+  load_and_authorize_resource
 
   def current_ability
     @current_ability ||= UserAbility.new(current_user)
@@ -21,10 +22,6 @@ class UsersController < ResourcesController
 
   def appointments
     @appointments = current_user.appointments
-  end
-
-  def doctors
-    @doctors = Doctor.available
   end
 
   private

@@ -1,24 +1,12 @@
-# README
+# HospitalManagement
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## About
 
-Things you may want to cover:
+HospitalManagement is a web application for managing hospital. It allows to manage patients, doctors, visits and more.
 
-* Ruby version
+### Manual setup
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Install [ruby 3.1.2](https://www.ruby-lang.org/en/documentation/installation/)
+2. Install postgresql
+8. `$ bundle install`
+9. `$ bundle exec rails s`

@@ -6,11 +6,21 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  root to: 'home#index'
-
   resources :users, only: [:show, :edit, :update] do
     get :appointments, on: :member
   end
-  resources :doctors, only: [:show, :edit, :update]
-  resources :appointments, only: [:new, :create, :edit, :update]
+
+  resources :doctors, only: [:show, :edit, :update] do
+    get :appointments, on: :member
+  end
+
+  resources :appointments, only: [:new, :create, :show] do
+    member do
+      get :add_recommendation
+      patch :attach_recommendation
+    end
+  end
+
+  get 'doctors', to: 'home#doctors'
+  root to: 'home#index'
 end

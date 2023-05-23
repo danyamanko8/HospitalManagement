@@ -1,0 +1,12 @@
+.card.text-center.mt-5.position-absolute.start-50.translate-middle{ style: 'top: 70%; width: 30rem;' }
+  .card-body.mt-5
+    = simple_form_for @record, url: doctor_path(@record), method: :patch, html: { multipart: true, class: 'form-group' } do |f|
+      = f.input :first_name, class: 'form-control mb-3', placeholder: 'First name', required: true, autofocus: true, hint: 'Enter your first name'
+      = f.input :last_name, class: 'form-control mb-3', placeholder: 'Last name', required: true, hint: 'Enter your last name'
+      = f.input :email, class: 'form-control mb-3', placeholder: 'Email', required: true, hint: 'Enter your email'
+      = f.input :phone_number, class: 'form-control mb-3', placeholder: 'Phone number', required: true, hint: 'Enter your phone number'
+      = f.input :bio, class: 'form-control mb-3', placeholder: 'Bio', required: true, hint: 'Enter your bio', as: :text
+      = f.collection_select :category_id, Category.all, :id, :public_label, { include_blank: 'Tap to select', selected: @record.category&.public_label }, { class: 'form-control mb-3' }
+      .form-actions
+        = link_to 'Back', doctor_path(@record), class: 'btn btn-outline-primary'
+        = f.button :submit, "Update", class: "btn btn-outline-success"

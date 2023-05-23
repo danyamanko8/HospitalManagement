@@ -1,8 +1,11 @@
-.card.text-center.mt-5.position-absolute.start-50.translate-middle{ style: 'top: 40%; width: 30rem;' }
+.card.text-center.mt-5.position-absolute.start-50.translate-middle{ style: 'top: 30%; width: 40rem;' }
   .card-body.mt-5
-    = simple_form_for @record, url: appointments_path, method: :post, html: { multipart: true, class: 'form-group' } do |f|
-      = f.input :doctor_id, collection: Doctor.all.map(&:full_name), include_blank: false, input_html: { data: { selected: @record.doctor_id }, onchange: 'this.dataset.selected = this.value' }
+    = simple_form_for @record, url: appointments_path(doctor_id: @doctor.id), method: :post, html: { multipart: true, class: 'form-group' } do |f|
+      = f.hidden_field :doctor_id, value: @doctor.id
+      .card-title
+        %h5
+          = "Book an appointment with #{@doctor.full_name_with_category}"
       = f.input :start_time, as: :datetime, start_year: Date.today.year, end_year: Date.today.year + 1, class: 'form-control mb-3', selected: f.object.start_time
       .form-actions
-        = link_to 'Back', appointments_path, class: 'btn btn-outline-primary'
+        = link_to 'Back', doctors_path, class: 'btn btn-outline-primary'
         = f.button :submit, "Create", class: "btn btn-outline-success"
