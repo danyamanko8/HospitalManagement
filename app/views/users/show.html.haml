@@ -1,5 +1,5 @@
 .card.mt-5.position-absolute.start-50.translate-middle{ style: 'top: 60%; width: 30rem;' }
-  = image_tag @record.avatar.url(:thumb), class: 'card-img-top mt-3', style: 'width: 10rem; height: 10rem;'
+  = image_tag @record.avatar.url(:thumb), class: 'card-img-top mt-3', style: 'width: 10rem; height: 10rem;  margin-left: 20px'
   .card-body
     %h5.card-title
       = "#{[@record.first_name, @record.last_name].compact.join(' ')}"

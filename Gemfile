@@ -46,16 +46,7 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
 end
 
-group :development, :test do
-  # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem 'web-console'
-
-  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  # gem "rack-mini-profiler"
-
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
-end
+gem 'web-console', group: :development
 
 # for UI purposes
 gem 'bootstrap', '~> 5.3.0.alpha3'
@@ -93,15 +84,14 @@ gem 'cancancan'
 
 # for testing
 group :development, :test do
-  gem 'rspec-rails', '~> 3.8', '>= 3.8.2'
-  gem 'factory_bot_rails', '~> 5.1'
-  gem 'capybara', '~> 3.29'
-  gem 'faker'
   gem 'byebug'
+  gem 'capybara', '~> 3.29'
+  gem 'factory_bot_rails', '~> 5.1'
+  gem 'faker'
   gem 'rails-controller-testing'
+  gem 'rspec-rails', '~> 3.8', '>= 3.8.2'
 end
 
 group :test do
   gem 'database_cleaner', '~> 1.7'
 end
-

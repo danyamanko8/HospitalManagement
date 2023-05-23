@@ -14,7 +14,7 @@ class UsersController < ResourcesController
 
   def update
     if @record.update(user_params)
-      redirect_back(fallback_location: root_path, notice: 'Your account was successfully updated.')
+      redirect_to root_path, notice: 'Your account was successfully updated.'
     else
       render :edit, alert: "There was an error updating your account: #{@record.errors.full_messages.join('; ')}"
     end

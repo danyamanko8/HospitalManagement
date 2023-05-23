@@ -1,7 +1,7 @@
 .card.text-center.mt-5.position-absolute.start-50.translate-middle{ style: 'top: 100%; width: 30rem;' }
   .card-body.mt-5
     = simple_form_for @record, url: user_path(@record), method: :patch, html: { multipart: true, class: 'form-group' } do |f|
-      = f.input :avatar, class: 'form-control-file mb-5', id: 'exampleFormControlFile1', accept: 'image/png image/jpeg image/jpg', as: :file, hint: 'Upload your avatar'
+      = f.input :avatar, class: 'form-control-file mb-5', id: 'exampleFormControlFile1', as: :file, hint: 'Upload your avatar', input_html: { accept: '.png, .jpeg, .jpg' }
       = f.input :first_name, class: 'form-control mb-3', placeholder: 'First name', required: true, autofocus: true, hint: 'Enter your first name'
       = f.input :last_name, class: 'form-control mb-3', placeholder: 'Last name', required: true, hint: 'Enter your last name'
       = f.input :email, class: 'form-control mb-3', placeholder: 'Email', required: true, hint: 'Enter your email'

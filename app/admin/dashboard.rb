@@ -6,7 +6,7 @@ ActiveAdmin.register_page 'Dashboard' do
   content title: proc { I18n.t('active_admin.dashboard') } do
     columns do
       column do
-        panel "Recent Appointments" do
+        panel 'Recent Appointments' do
           ul do
             Appointment.last(5).map do |app|
               ul do
@@ -22,7 +22,7 @@ ActiveAdmin.register_page 'Dashboard' do
       end
 
       column do
-        panel "Categories" do
+        panel 'Categories' do
           ul do
             Category.all.map do |category|
               ul do
