@@ -19,5 +19,4 @@
             %td= appointment.user&.full_name
             %td= appointment.user&.phone_number
             %td= appointment.start_time.strftime('%A, %B %d, %Y at %I:%M %p')
-            - if appointment.active?
-              %td= link_to 'Add or Update Prescription', add_recommendation_appointment_path(appointment), class: 'btn btn-outline-primary'
+            %td= link_to 'Add or Update Prescription', add_recommendation_appointment_path(appointment), class: 'btn btn-outline-primary' if appointment.active?
